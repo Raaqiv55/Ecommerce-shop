@@ -145,7 +145,31 @@ class Product{
 			}	
 		}
 	}
+
+	public function delProById($id){
+		$query = "SELECT * FROM tbl_product WHERE productId = '$id' ";
+		$getData = $this->db->select($query);
+		if($getData){
+			while($delImg = $getData->fetch_assoc()){
+				$dellink = $delImg['image'];
+				unlink($dellink);
+			}
+		}
+
+		$delquery = "DELETE FROM tbl_product WHERE productId = '$id' ";
+		$deldata = $this->db->delete($delquery);
+		if($deldata){
+			$msg = "<span class='success'>Proudct Deleted Successfully.</span>";
+			return $msg;
+		}else{
+			$msg = "<span class='error'>Product Not Delected.</span>";
+			return $msg;
+		}
+	}
+
+
 }
 
 
 ?>
+
