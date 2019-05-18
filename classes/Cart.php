@@ -1,7 +1,7 @@
 <?php 
 
-include_once '../lib/Database.php';
-include_once '../helpers/Format.php';
+include_once './lib/Database.php';
+include_once './helpers/Format.php';
 
 ?>
 <?php 
