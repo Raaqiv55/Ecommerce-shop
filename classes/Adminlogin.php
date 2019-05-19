@@ -1,9 +1,11 @@
 <?php 
-	include_once '../lib/Session.php';
-	Session::checkLogin();
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath.'/../lib/Session.php');
+Session::checkLogin();
 
-	include_once '../lib/Database.php';
-	include_once '../helpers/Format.php';
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath.'/../lib/Database.php');
+include_once($filepath.'/../helpers/Format.php');
 
 ?>
 
