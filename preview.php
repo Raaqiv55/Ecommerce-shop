@@ -1,9 +1,19 @@
 <?php include 'inc/header.php'; ?>
+<?php 
+	if(!isset($_GET['proid']) || $_GET['proid'] == NULL){
+		echo "<script>window.location = '404.php'; </script>";
+	}else{
+		$id = $_GET['proid'];
+	}
+?>
 
  <div class="main">
     <div class="content">
     	<div class="section group">
-				<div class="cont-desc span_1_of_2">				
+				<div class="cont-desc span_1_of_2">			
+					<?php 
+						$getPd = $pd->getSingleProduct($id);
+					?>
 					<div class="grid images_3_of_2">
 						<img src="images/preview-img.jpg" alt="" />
 					</div>
