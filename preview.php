@@ -7,6 +7,15 @@
 	}
 ?>
 
+<?php 
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		$quantity = $_POST['quantity'];
+
+		$addCart = $ct->addToCart($quantity, $id);
+	}
+
+?>
+
  <div class="main">
     <div class="content">
     	<div class="section group">
@@ -30,9 +39,9 @@
 						<p>Brand:<span><?php echo $result['brandName']; ?></span></p>
 					</div>
 				<div class="add-cart">
-					<form action="cart.html" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
-						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
+					<form action="" method="post">
+						<input type="number" class="buyfield" name="quantity" value="1"/>
+						<input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
 					</form>				
 				</div>
 			</div>

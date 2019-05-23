@@ -16,6 +16,10 @@ class Cart{
 		$this->fm = new Format();
 	}
 
+	public function addToCart($quantity, $id){
+
+	}
+
 }	
 
 	
