@@ -73,8 +73,8 @@ class Brand{
 			$msg = "<span class='success'>Brand Deleted Successfully</span>";
 			return $msg;
 		}else{
-			$msg = "<span class='error'>Brand Not Deleted</span>";
-			return $msg;
+			$msgs = "<span class='error'>Brand Not Deleted</span>";
+			return $msgs;
 		}
 	}
 
