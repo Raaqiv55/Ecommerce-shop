@@ -1,4 +1,6 @@
 $(window).load(function(){
+
+	
 	
 	// We are listening to the window.load event, so we can be sure
 	// that the images in the slideshow are loaded properly.
@@ -21,6 +23,7 @@ $(window).load(function(){
 		
 		if(supportCanvas){
 			$('#slideshow img').each(function(){
+				
 
 				if(!slideshow.width){
 					// Taking the dimensions of the first image:
@@ -125,6 +128,7 @@ $(window).load(function(){
 		
 		// Inserting the canvas in the DOM, before the image:
 		image.parentNode.insertBefore(canvas,image);
+
 	}
 	
 });
