@@ -7,14 +7,22 @@
 			<h2>Your Cart</h2>
 				<table class="tblone">
 					<tr>
-						<th width="20%">Product Name</th>
+						<th width="5%">Sl</th>
+						<th width="30%">Product Name</th>
 						<th width="10%">Image</th>
 						<th width="15%">Price</th>
-						<th width="25%">Quantity</th>
-						<th width="20%">Total Price</th>
+						<th width="15%">Quantity</th>
+						<th width="15%">Total Price</th>
 						<th width="10%">Action</th>
 					</tr>
+					<?php 
+						$getPro = $ct->getCartProduct();
+						if($getPro){
+							while($result = $getPro->fetch_assoc()){
+
+					?>
 					<tr>
+						<td>01</td>
 						<td>Product Title</td>
 						<td><img src="images/new-pic3.jpg" alt=""/></td>
 						<td>Tk. 20000</td>
@@ -27,61 +35,11 @@
 						<td>Tk. 40000</td>
 						<td><a href="">X</a></td>
 					</tr>
+					<?php 
+						}
+					}
+					?>
 					
-					<tr>
-						<td>Product Title</td>
-						<td><img src="images/new-pic3.jpg" alt=""/></td>
-						<td>Tk. 20000</td>
-						<td>
-							<form action="" method="post">
-								<input type="number" name="" value="1"/>
-								<input type="submit" name="submit" value="Update"/>
-							</form>
-						</td>
-						<td>Tk. 40000</td>
-						<td><a href="">X</a></td>
-					</tr>
-					
-					<tr>
-						<td>Product Title</td>
-						<td><img src="images/new-pic3.jpg" alt=""/></td>
-						<td>Tk. 20000</td>
-						<td>
-							<form action="" method="post">
-								<input type="number" name="" value="1"/>
-								<input type="submit" name="submit" value="Update"/>
-							</form>
-						</td>
-						<td>Tk. 40000</td>
-						<td><a href="">X</a></td>
-					</tr>
-					<tr>
-						<td>Product Title</td>
-						<td><img src="images/new-pic3.jpg" alt=""/></td>
-						<td>Tk. 20000</td>
-						<td>
-							<form action="" method="post">
-								<input type="number" name="" value="1"/>
-								<input type="submit" name="submit" value="Update"/>
-							</form>
-						</td>
-						<td>Tk. 40000</td>
-						<td><a href="">X</a></td>
-					</tr>
-					
-					<tr>
-						<td>Product Title</td>
-						<td><img src="images/new-pic3.jpg" alt=""/></td>
-						<td>Tk. 20000</td>
-						<td>
-							<form action="" method="post">
-								<input type="number" name="" value="1"/>
-								<input type="submit" name="submit" value="Update"/>
-							</form>
-						</td>
-						<td>Tk. 40000</td>
-						<td><a href="">X</a></td>
-					</tr>
 					
 				</table>
 				<table style="float:right;text-align:left;" width="40%">

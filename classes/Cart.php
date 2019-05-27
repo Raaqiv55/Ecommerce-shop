@@ -38,6 +38,13 @@ class Cart{
 			header('Location:404.php');
 		}
 	}
+	
+	public function getCartProduct(){
+		$sId = session_id();
+		$query = "SELECT * FROM tbl_cart WHERE productId = '$sId'";
+		$result = $this->db->select($query);
+		return $result; 
+	}
 
 }	
 
