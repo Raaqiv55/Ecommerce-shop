@@ -29,6 +29,13 @@ class Cart{
 		$price = $result['price'];
 		$image = $result['image'];
 
+		$cquery = "SELECT * FROM tbl_cart WHERE productId = '$productId' AND sId = '$sId'";
+		$getPro = $this->db->select($cquery);
+		if($getPro){
+			$msg = "Product Already Added!";
+			return $msg;
+		}else{
+		
 		$query = "INSERT INTO tbl_cart(sId, productId, productName, price, quantity, image) VALUES ('$sId', '$productId', '$productName', '$price', '$quantity', '$image')";
 
 		$inserted_row = $this->db->insert($query);
@@ -38,10 +45,11 @@ class Cart{
 			header('Location:404.php');
 		}
 	}
+}
 	
 	public function getCartProduct(){
 		$sId = session_id();
-		$query = "SELECT * FROM tbl_cart WHERE productId = '$sId'";
+		$query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
 		$result = $this->db->select($query);
 		return $result; 
 	}

@@ -18,23 +18,33 @@
 					<?php 
 						$getPro = $ct->getCartProduct();
 						if($getPro){
+							$i = 0;
+							$sum = 0;
 							while($result = $getPro->fetch_assoc()){
-
+								$i++;
 					?>
 					<tr>
-						<td>01</td>
-						<td>Product Title</td>
-						<td><img src="images/new-pic3.jpg" alt=""/></td>
-						<td>Tk. 20000</td>
+						<td><?php echo $i; ?></td>
+						<td><?php echo $result['productName']; ?>/td>
+						<td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
+						<td>$<?php echo $result['price']; ?></td>
 						<td>
 							<form action="" method="post">
 								<input type="number" name="" value="1"/>
 								<input type="submit" name="submit" value="Update"/>
 							</form>
 						</td>
-						<td>Tk. 40000</td>
+						<td>$
+						<?php 
+							$total = $result['price'] * $result['quantity'];
+							echo $total;
+						?>	
+						</td>
 						<td><a href="">X</a></td>
 					</tr>
+					<?php 
+						$sum = $sum + $total;
+					?>
 					<?php 
 						}
 					}
@@ -45,15 +55,21 @@
 				<table style="float:right;text-align:left;" width="40%">
 					<tr>
 						<th>Sub Total : </th>
-						<td>TK. 210000</td>
+						<td>$<?php echo $sum; ?></td>
 					</tr>
 					<tr>
 						<th>VAT : </th>
-						<td>TK. 31500</td>
+						<td>
+							10%
+						</td>
 					</tr>
 					<tr>
 						<th>Grand Total :</th>
-						<td>TK. 241500 </td>
+						<td>$<?php 
+							$vat = $sum * 0.1;
+							$gtotal = $vat + $sum;
+							echo $gtotal;
+						?></td>
 					</tr>
 				</table>
 			</div>
