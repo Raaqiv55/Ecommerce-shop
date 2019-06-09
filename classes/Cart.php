@@ -54,7 +54,39 @@ class Cart{
 		return $result; 
 	}
 
-}	
+	public function updateCartQuantity($cartId, $quantity){
+		$cartId = mysqli_real_escape_string($this->db->link, $cartId);
+		$quantity = mysqli_real_escape_string($this->db->link, $quantity);
+
+		$query = "UPDATE tbl_cart 
+					SET 
+				quantity = '$quantity'
+				WHERE cartId = '$cartId' ";
+				$update_row = $this->db->update($query);
+				if($update_row){
+					$msg = "<span class='success'>Quanity Updated Successfully.</span>";
+					return $msg;
+				}else{
+					$msg = "<span class='error'>Quantity Not Updated. </span>";
+					return $msg;
+				}
+	}
+
+	public function delProductByCart($delId){
+		$delId = mysqli_real_escape_string($this->db->link, $delId);
+		$query = "DELETE FROM tbl_cart WHERE cartId = '$delId' ";
+		$deldata = $this->db->delete($query);
+		if($deldata){
+			echo "<script>window.location = 'cart.php'</script> ";
+		}else{
+			$msg = "<span class='error'>Product Not Deleted.</span>";
+			return $msg;
+		}
+	}
+
+}
+
+
 
 	
 ?>
