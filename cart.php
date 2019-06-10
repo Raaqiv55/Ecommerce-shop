@@ -46,6 +46,7 @@
 						if($getPro){
 							$i = 0;
 							$sum = 0;
+							$qty = 0;
 							while($result = $getPro->fetch_assoc()){
 								$i++;
 					?>
@@ -71,7 +72,10 @@
 						<td><a onclick="return confirm('Are you sure to Delete'); " href="?delpro=<?php echo $result['cartId']; ?>">X</a></td>
 					</tr>
 					<?php 
+						$qty = $qty + $result['quantity'];
 						$sum = $sum + $total;
+						Session::set("qty", $qty);
+						Session::set("sum", $sum);
 					?>
 					<?php 
 						}
@@ -80,6 +84,11 @@
 					
 					
 				</table>
+				<?php 
+					$getData = $ct->checkCartTable();
+					if($getData){
+
+				?>
 				<table style="float:right;text-align:left;" width="40%">
 					<tr>
 						<th>Sub Total : </th>
@@ -95,11 +104,14 @@
 						<th>Grand Total :</th>
 						<td>$<?php 
 							$vat = $sum * 0.1;
-							$gtotal = $vat + $sum;
+							$gtotal = $sum + $vat;
 							echo $gtotal;
 						?></td>
 					</tr>
 				</table>
+					<?php } else{
+						echo "Cart Empty";
+					} ?>
 			</div>
 			<div class="shopping">
 				<div class="shopleft">
