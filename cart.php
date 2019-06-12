@@ -17,6 +17,11 @@
 		}
 	}
 ?>
+<?php 
+	if(!isset($_GET['id'])){
+		echo "<meta http-equiv='refresh' content='0;URL=?id=live'/>";
+	}
+?>
 
 <div class="main">
 <div class="content">
@@ -110,7 +115,8 @@
 					</tr>
 				</table>
 					<?php } else{
-						echo "Cart Empty";
+						header("Location:index.php");
+						//echo "Cart Empty";
 					} ?>
 			</div>
 			<div class="shopping">
