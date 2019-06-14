@@ -16,6 +16,28 @@ class User{
 		$this->db = new Database();
 		$this->fm = new Format();
 	}
+	public function customerRegistration($data){
+		$name 	 = mysqli_real_escape_string($this->db->link, $data['name']);
+		$address = mysqli_real_escape_string($this->db->link, $data['address']);
+		$city 	 = mysqli_real_escape_string($this->db->link, $data['city']);
+		$country = mysqli_real_escape_string($this->db->link, $data['country']);
+		$zip  	 = mysqli_real_escape_string($this->db->link, $data['zip']);
+		$phone   = mysqli_real_escape_string($this->db->link, $data['phone']);
+		$email   = mysqli_real_escape_string($this->db->link, $data['email']);
+		$pass    = mysqli_real_escape_string($this->db->link, $data['pass']);
+		if($name == "" || $address == "" || $city == "" || $country == "" || $zip == "" || $phone == "" || $email == "" || $pass == "" ){
+			$msg = "<span class='error'>Field Must Not be empty. </span>";
+			return $msg;
+		}
+		$mailquery = "SELECT * FROM tbl_customer WHERE email = '$email' LIMIT 1";
+		$mailchk = $this->select($mailquery);
+		if($mailchk != false){
+			$msg = "<span class='error'>Email already exit.</span>";
+			return $msg;
+		}else{
+
+		}	
+	}
 
 }
 

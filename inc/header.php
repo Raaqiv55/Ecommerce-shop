@@ -13,6 +13,7 @@
   $pd = new Product();
   $cat = new Category();
   $ct = new Cart(); 
+  $cmr = new User();
 
 ?>
 
