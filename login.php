@@ -16,6 +16,11 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
 				$customerReg = $cmr->customerRegistration($_POST);
 			}
+		?>
+		<?php 
+			if(isset($customerReg)){
+				echo $customerReg;
+			}
 		?>			
     	<div class="register_account">
     		<h3>Register New Account</h3>
