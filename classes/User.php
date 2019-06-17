@@ -48,6 +48,27 @@ class User{
 		}	
 	}
 
+	public function customerLogin($data){
+		$email = mysqli_real_escape_string($this->db->link, $data['email']);
+		$pass = mysqli_real_escape_string($this->db->link, md5($data['pass']));
+		if($email == "" || $pass == ""){
+			$msg = "<span class='error'>Field Must Not be empty.</span>";
+			return $msg;
+		}
+		$query = "SELECT * FROM tbl_customer WHERE email='$email' AND pass = '$pass' ";
+		$result = $this->db->select($query);
+		if($result != false){
+			$value = $result->fetch_assoc();
+			Session::set('cuslogin', true);
+			Session::set('cmrId', $value['id']);
+			Session::set('cmrName', $value['name']);
+			header('Location:order.php');
+		}else{
+			$msg = "<span class='error'>Email Or Password Not Matched</span>";
+			return $msg;
+		}
+	}
+
 }
 
 
