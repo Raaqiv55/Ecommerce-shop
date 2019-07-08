@@ -5,6 +5,15 @@
 		header("Location:login.php");
 	}
 ?>
+<?php 
+    if(isset($_GET['orderid']) && $_GET['orderid'] == 'order'){
+        $cmrId = Session::get('cmrId');
+        $insertOrder = $ct->orderProduct($cmrId);
+        $delDate = $ct->delCustomerCart();
+        header("Location:success.php");
+    }
+
+?>
 <style>
     .division{width: 50%;float: left;}
     .tblone{width: 520px; margin: 0 auto; border: 2px solid #ddd; font-size: 11px;}
@@ -154,6 +163,6 @@
                 </div>
             </div>
      </div>
-       <div class="ordernow"><a href=""> Order </a></div>                     
+       <div class="ordernow"><a href="?orderid=order"> Order </a></div>                     
 </div>
   <?php include 'inc/footer.php'; ?>
