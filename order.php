@@ -23,6 +23,7 @@
 						<th>Image</th>
 						<th>Quantity</th>
 						<th>Total Price</th>
+						<th>Status</th>
 						<th>Action</th>
 					</tr>	
 					<?php 
@@ -46,7 +47,20 @@
 							echo $total;
 						?>	
 						</td>
-						<td><a onclick="return confirm('Are you sure to Delete'); " href="">X</a></td>
+						<td>
+							<?php 
+								if($result['status'] == '0'){
+									echo 'Pending';
+								}else{
+									echo 'Shifted';
+								}
+							?>	
+						</td>
+						<?php 
+							if($result['status'] == '1'){  ?>
+								<td><a onclick="return confirm('Are you sure to Delete'); " href="">X</a></td>
+						<?php } ?>
+							<td>N/A</td>	
 					</tr>
 					<?php 
 						}

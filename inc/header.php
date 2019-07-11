@@ -98,13 +98,20 @@
 	  <li><a href="index.php">Home</a></li>
 	  <li><a href="products.php">Products</a> </li>
 	  <li><a href="topbrands.php">Top Brands</a></li>
-	  <?php 
+	  	<?php 
 		 $chkCart = $ct->checkCartTable(); 
 		 if($chkCart){
 		?>
 		<li><a href="cart.php">Cart</a></li>
 		<li><a href="payment.php">Payment</a></li>
 		<?php } ?>
+		<?php 
+		$cmrId = Session::get("cmrId");
+		$chkOrder = $ct->checkOrder($cmrId);
+		if($chkOrder) { ?>
+			<li><a href="order.php">Order</a></li>
+		<?php } ?>
+
 	  <?php 
 		 $login = Session::get("cuslogin");
 		 if($login == true){
