@@ -132,6 +132,23 @@ class Cart{
 		$result = $this->db->select($query);
 		return $result;
 	}
+	public function productShifted($id, $date, $price){
+		$id = mysqli_real_escape_string($this->db->link, $id);
+		$date = mysqli_real_escape_string($this->db->link, $date);
+		$price = mysqli_real_escape_string($this->db->link, $price);
+		$query = "UPDATE tbl_order 
+					SET 
+					status = '1'
+					WHERE cmrId = '$id' AND date = '$date' AND price = '$price'";
+			$update_row = $this->db->update($query);
+			if($update_row){
+				$msg = "<span class='success'>Update Successfully.</span>";
+				return $msg;
+			}else{
+				$msg = "<span class='error'>Not Updated.</span>";
+				return $msg;
+			}		
+	}
 }
 
 
