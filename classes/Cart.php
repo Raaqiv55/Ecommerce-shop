@@ -149,6 +149,21 @@ class Cart{
 				return $msg;
 			}		
 	}
+	public function deproductShifted($id, $time, $price){
+		$id = mysqli_real_escape_string($this->db->link, $id);
+		$date = mysqli_real_escape_string($this->db->link, $time);
+		$price = mysqli_real_escape_string($this->db->link, $price);
+		$query = "DELETE FROM tbl_order WHERE cmrId = '$id' AND date='$date' AND price='$price'";
+		$deldata = $this->db->delete($query);
+		if($deldata){
+			$msg = "<span class='success'>Data Deleted Successfull.</span>";
+			return $msg;
+		}else{
+			$msg = "<span class='error'>Data Not Deleted</span>";
+			return $msg;
+		}
+
+	}
 }
 
 
